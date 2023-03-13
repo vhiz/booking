@@ -13,7 +13,7 @@ export default function Hotel() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
-  const { isLoading, error, data } = useQuery(["hotel"], async () => {
+  const { isLoading, error, data } = useQuery(["hotel", id], async () => {
     const res = await makeRequest.get(`/hotel/${id}`);
     return res.data;
   });

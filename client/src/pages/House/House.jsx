@@ -26,7 +26,7 @@ export default function House() {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
 
-  const { isLoading, error, data } = useQuery(["hotel"], async () => {
+  const { isLoading, error, data } = useQuery(["hotel", id], async () => {
     const res = await makeRequest.get(`hotel/${id}`);
     return res.data;
   });

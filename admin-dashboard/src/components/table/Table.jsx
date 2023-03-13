@@ -33,7 +33,7 @@ export default function Tables({ type, id }) {
       break;
   }
 
-  const { isLoading, error, data } = useQuery([`${rows.query}`], async () => {
+  const { isLoading, error, data } = useQuery([`${rows.query}`, rows.query], async () => {
     const res = await makeRequest.get(`${rows.url}`);
     return res.data;
   });

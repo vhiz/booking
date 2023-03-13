@@ -13,7 +13,7 @@ export default function User() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
-  const { isLoading, error, data } = useQuery(["user"], async () => {
+  const { isLoading, error, data } = useQuery(["user", id], async () => {
     const res = await makeRequest.get(`/users/${id}`);
     return res.data;
   });

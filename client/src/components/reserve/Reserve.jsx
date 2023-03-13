@@ -11,7 +11,7 @@ export default function Reserve({ setOpenModal, hotelId, hotelName }) {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { date } = useContext(SearchContext);
 
-  const { isLoading, error, data } = useQuery(["rooms"], async () => {
+  const { isLoading, error, data } = useQuery(["rooms", hotelId], async () => {
     const res = await makeRequest.get(`hotel/room/${hotelId}`);
     return res.data;
   });

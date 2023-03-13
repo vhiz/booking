@@ -2,10 +2,11 @@ const { Hotel } = require("../model/Hotel");
 const { Logs } = require("../model/Logs");
 
 const getHotels = async (req, res) => {
-  const { min, max, name, ...others } = req.query;
+  const { min, max, ...others } = req.query;
   try {
     const hotels = await Hotel.find({
       ...others,
+      city: { $regex: req.query.city, $options: "i" },
       cheapestPrice: { $gt: min | 1, $lt: max || 999 },
     });
     res.status(200).json(hotels);

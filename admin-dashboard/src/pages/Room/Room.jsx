@@ -12,7 +12,7 @@ export default function Room() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
-  const { isLoading, error, data } = useQuery(["room"], async () => {
+  const { isLoading, error, data } = useQuery(["room", id], async () => {
     const res = await makeRequest.get(`/rooms/${id}`);
     return res.data;
   });

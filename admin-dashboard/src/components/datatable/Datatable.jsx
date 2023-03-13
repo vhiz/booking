@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function Datatable({ columns, title }) {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  const { isLoading, error, data } = useQuery([`${path}`], async () => {
+  const { isLoading, error, data } = useQuery([`${path}`, path], async () => {
     const res = await makeRequest.get(`/${path}`);
     return res.data;
   });
@@ -30,7 +30,10 @@ export default function Datatable({ columns, title }) {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${path}/${params.row._id}`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="view">View</div>
             </Link>
             <div
