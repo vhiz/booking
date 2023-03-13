@@ -5,6 +5,7 @@ const getHotels = async (req, res) => {
   const { min, max, name, ...others } = req.query;
   try {
     const hotels = await Hotel.find({
+      name:{ $regex: name, $options: "i" },
       ...others,
       cheapestPrice: { $gt: min | 1, $lt: max || 999 },
     });
