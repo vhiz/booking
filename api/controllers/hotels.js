@@ -6,12 +6,12 @@ const getHotels = async (req, res) => {
   try {
     const hotels = await Hotel.find({
       ...others,
-      city: { $regex: req.query.city, $options: "i" },
-      cheapestPrice: { $gt: min | 1, $lt: max || 999 },
+      city: { $regex: new RegExp(req.query.city, "i") },
+      cheapestPrice: { $gt: min || 1, $lt: max || 999 },
     });
-    res.status(200).json(hotels);
+    res.json(hotels);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
