@@ -9,9 +9,9 @@ const { verifyAdmin } = require("../utils/token");
 
 const router = require("express").Router();
 
-router.get("/", verifyAdmin, getUsers);
+router.get("/", getUsers);
 
-router.get("/:id", verifyAdmin, getUserById);
+router.get("/:id", getUserById);
 
 router.get("/me", getUser);
 
