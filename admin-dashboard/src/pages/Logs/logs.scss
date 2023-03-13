@@ -1,0 +1,51 @@
+@import "../../app.scss";
+.log {
+  @include themify($themes) {
+    display: flex;
+
+    .logContainer {
+      flex: 6;
+      background-color: themed("bg");
+
+      .noinfo {
+        font-size: 100px;
+        padding-left: 150px;
+        color: #cfc3c386;
+      }
+      .log {
+        -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.16);
+        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.16);
+        padding: 10px;
+        margin: 20px;
+        border-radius: 5px;
+        display: flex;
+        background-color: themed("bgSoft");
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          flex: 1;
+          align-items: center;
+        }
+
+        .right {
+          display: flex;
+          flex: 1;
+          align-items: center;
+          justify-content: flex-end;
+
+          p{
+            font-size: 10px;
+          }
+        }
+
+        p {
+          font-size: 15px;
+          color: themed("textColor");
+          align-self: flex-end;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
